@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +30,8 @@ export default function LoginPage() {
     setTimeout(() => {
       setIsLoading(false);
       setIsSuccess(true);
-    }, 1000);
+      router.push("/dashboard");
+    }, 900);
   };
 
   const handleDemoFill = () => {
